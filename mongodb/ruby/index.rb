@@ -37,11 +37,12 @@ end
 def AddUser(user)
     result = $collection.insert_one(user)
     $messages.append("Adding user to collection")
-    result.n 
+    result.inserted_id 
 end
 
 def GetUser(id)
-    puts $collection.find( { id: id } ).first
+    user = $collection.find( { _id: BSON::ObjectId(id) } ).first
+    $messages.append("Getting user #{user} from collection")
 end
 
 def GetUsers()
