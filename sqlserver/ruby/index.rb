@@ -31,7 +31,7 @@ def Connect()
     results = $client.execute("SET CONCAT_NULL_YIELDS_NULL ON")
 
     if $client.active? == true then 
-        $messages.push("Connected to SQL Server")
+        $messages.append("Connected to SQL Server")
     end
 end
 
