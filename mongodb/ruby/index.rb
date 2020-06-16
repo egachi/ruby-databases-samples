@@ -68,21 +68,29 @@ def randomString()
     return Array.new(10) { charset.sample }.join
 end
 
-#Calling methods
-Connect()
-CreateCollection()
-user = {name: 'User - ' + randomString, hobbies: [ randomString, randomString ]}
-id = AddUser(user)
-GetUser(id)
 
-user2 = {name: 'User - ' + randomString, hobbies: [ randomString, randomString ]}
-id2 = AddUser(user2)
+begin
+    #Calling methods
+    Connect()
+    CreateCollection()
+    user = {name: 'User - ' + randomString, hobbies: [ randomString, randomString ]}
+    id = AddUser(user)
+    GetUser(id)
 
-GetUsers()
-DeleteUser(id)
-DeleteAllUsers()
-DeleteCollection()
+    user2 = {name: 'User - ' + randomString, hobbies: [ randomString, randomString ]}
+    id2 = AddUser(user2)
 
-for message in $messages
-    p message
-end 
+    GetUsers()
+    DeleteUser(id)
+    DeleteAllUsers()
+    DeleteCollection()
+
+    for message in $messages
+        p message
+    end 
+
+rescue => error
+    p "Raising error: #{ error }"
+ensure
+
+end
