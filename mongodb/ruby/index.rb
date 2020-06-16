@@ -18,7 +18,7 @@ Mongo::Logger.logger.level = Logger::FATAL #To disable Debug Logs
 #Methods
 def Connect()
     client = Mongo::Client.new([ "#{$host}:27017" ], :database => $database)
-    $messages.push("Connecting to Redis")
+    $messages.push("Connecting to MongoDB")
     $db = client.database
     $collection = client[:users] #Selecting users collection
     $messages.push("Selecting user collection")
